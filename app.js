@@ -9,8 +9,12 @@
       list.push(task);
     };
 
+    const getTaskList = function() {
+      return list;
+    }
+
     return {
-      list: list,
+      getTaskList: getTaskList,
       addTask: addTask
     };
   };
