@@ -22,7 +22,7 @@ describe('Todo', function() {
     });
   });
 
-  describe('#list', function() {
+  describe('#getTaskList', function() {
     it('should have named item after adding task', function() {
       let todo = new Todo();
       let list = todo.getTaskList();
