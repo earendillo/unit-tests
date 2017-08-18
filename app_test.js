@@ -30,4 +30,29 @@ describe('Todo', function() {
       expect(list[0]).to.be.string('new task');
     });
   });
+
+  describe('#removeTask', function() {
+    it('should throw error if task to delete is not provided', function() {
+      let todo = new Todo();
+      expect(function() {
+        (new Todo()).removeTask();
+      }).to.throw(Error);
+    });
+
+    it('should throw error if provided task does not exist', function() {
+      let todo = new Todo();
+      todo.addTask('some task');
+      expect(function() {
+        todo.removeTask('other task');
+      }).to.throw(Error);
+    });
+
+    it('should remove item by provided name', function() {
+      let todo = new Todo();
+      todo.addTask('new task');
+      expect(todo.getTaskList()).to.have.lengthOf(1);
+      todo.removeTask('new task');
+      expect(todo.getTaskList()).to.have.lengthOf(0);
+    });
+  });
 });

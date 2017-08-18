@@ -13,9 +13,26 @@
       return list;
     }
 
+    const removeTask = function(task) {
+
+      const doesExist = function(task) {
+        return list.some(function(item) {
+          return item === task;
+        });
+      };
+
+      if (!task) throw Error('no task is provided');
+      if (!doesExist(task)) throw Error('there is no such task');
+
+      list = list.filter(function(item) {
+        return item !== task;
+      });
+    };
+
     return {
       getTaskList: getTaskList,
-      addTask: addTask
+      addTask: addTask,
+      removeTask: removeTask
     };
   };
 
